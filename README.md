@@ -1,13 +1,15 @@
-using System;
+uusing System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using YP3;
 
-namespace demo5
+namespace YP3
 {
     public partial class Form1 : Form
     {
         // НИЖЕ СТРОКА ДЛЯ ПОДКЛЮЧЕНИЯ БД, КОТОРУЮ МЫ СОЗДАЛИ РАНЕЕ, НАЗВАНИЕ СЕРВЕРА ПОСМОТРИТЕ В СВОЙСТВАХ В SSMS 22(У МЕНЯ ТАКОЕ - WIN-PUURG92IVC5\SQLEXPRESS У ВАС МОЖЕТ НАЗЫВАТЬСЯ ИНАЧЕ!!!!)
-        string connectionString = @"Data Source=WIN-PUURG92IVC5\SQLEXPRESS;Initial Catalog=Shoes;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=KRN-20-202-C6;Initial Catalog=YP;Integrated Security=True;TrustServerCertificate=True";
 
         public Form1()
         {
@@ -32,7 +34,7 @@ namespace demo5
                 {
                     conn.Open();
                     // Запрос - получаем роль и ФИО пользователя с БД
-                    string query = "SELECT RoleId, Surname, Name, Patronmic FROM [User] WHERE Login = @log AND Password = @pass";
+                    string query = "SELECT RoleId, Surname, Name, Patronymic FROM [User] WHERE Login = @log AND Password = @pass";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@log", textBox1.Text);
                     cmd.Parameters.AddWithValue("@pass", textBox2.Text);
